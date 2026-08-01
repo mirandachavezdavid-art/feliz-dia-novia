@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Día de la Novia ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+background:linear-gradient(180deg,#ffcad4,#ffe5ec);
+font-family:Arial,Helvetica,sans-serif;
+overflow-x:hidden;
+color:white;
+text-align:center;
+}
+
+#intro{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:black;
+}
+
+#intro h1{
+font-size:45px;
+animation:fade 3s infinite alternate;
+}
+
+button{
+padding:15px 40px;
+font-size:22px;
+margin-top:40px;
+border:none;
+border-radius:50px;
+background:#ff4d6d;
+color:white;
+cursor:pointer;
+box-shadow:0 0 30px pink;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+#contenido{
+display:none;
+padding:40px;
+}
+
+img{
+width:300px;
+border-radius:20px;
+box-shadow:0 0 40px rgba(255,255,255,.6);
+transition:.5s;
+}
+
+img:hover{
+transform:rotateY(12deg) scale(1.05);
+}
+
+#contador{
+font-size:30px;
+margin:30px;
+font-weight:bold;
+color:#ff0055;
+}
+
+#carta{
+max-width:900px;
+margin:auto;
+font-size:22px;
+line-height:1.9;
+background:rgba(255,255,255,.2);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(8px);
+}
+
+.corazon{
+position:fixed;
+top:-20px;
+font-size:25px;
+animation:caer linear forwards;
+}
+
+@keyframes caer{
+to{
+transform:translateY(110vh) rotate(720deg);
+opacity:0;
+}
+}
+
+.final{
+margin-top:80px;
+font-size:50px;
+font-weight:bold;
+animation:fade 2s infinite alternate;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="intro">
+
+<h1>Para la mujer que cambió mi vida ❤️</h1>
+
+<h2 style="margin-top:20px;">Feliz Día de la Novia</h2>
+
+<button onclick="iniciar()">Comenzar</button>
+
+</div>
+
+<div id="contenido">
+
+<audio id="audio" controls autoplay>
+<source src="audio.mp3" type="audio/mpeg">
+</audio>
+
+<br><br>
+
+<img src="foto.jpg">
+
+<h2 style="margin-top:30px;">Desde el 21 de diciembre del 2023</h2>
+
+<div id="contador"></div>
+
+<div id="carta"></div>
+
+<div class="final">
+
+ALETH ❤️ EFRAÍN
+
+</div>
+
+</div>
+
+<script>
+
+function iniciar(){
+
+document.getElementById("intro").style.display="none";
+
+document.getElementById("contenido").style.display="block";
+
+document.getElementById("audio").play();
+
+escribirCarta();
+
+}
+
+const carta=`✨ Mi amor, mi cielo y mi princesa ❤️
+
+Hoy, 1 de agosto, en el Día de la Novia, celebro la bendición más grande que Dios puso en mi camino: tú.
+
+Aún recuerdo con una sonrisa aquellos últimos meses de 2023 cuando nuestras vidas se cruzaron.
+
+Fue el 21 de diciembre de 2023 cuando tomamos la decisión de unir nuestros caminos como enamorados.
+
+"El amor es paciente, es bondadoso... Todo lo sufre, todo lo cree, todo lo espera, todo lo soporta. El amor nunca deja de ser."
+
+1 Corintios 13:4-8
+
+Hemos aprendido el verdadero significado de caminar juntos.
+
+Cristo es el centro de nuestra relación.
+
+"Cordón de tres dobleces no se rompe pronto."
+
+Eclesiastés 4:12
+
+Gracias por celebrar cada uno de mis logros y caminar conmigo.
+
+"Doy gracias a mi Dios cada vez que me acuerdo de ti."
+
+Filipenses 1:3
+
+Eres lo mejor que me ha pasado.
+
+Te amo con todo mi corazón.
+
+Con todo mi amor...
+
+Siempre tuyo,
+
+❤️ Efraín ❤️`;
+
+let i=0;
+
+function escribirCarta(){
+
+if(i<carta.length){
+
+document.getElementById("carta").innerHTML+=carta.charAt(i);
+
+i++;
+
+setTimeout(escribirCarta,35);
+
+}
+
+}
+
+const inicio=new Date("2023-12-21T00:00:00");
+
+setInterval(()=>{
+
+const ahora=new Date();
+
+const d=ahora-inicio;
+
+const dias=Math.floor(d/1000/60/60/24);
+
+const horas=Math.floor((d/1000/60/60)%24);
+
+const minutos=Math.floor((d/1000/60)%60);
+
+const segundos=Math.floor((d/1000)%60);
+
+document.getElementById("contador").innerHTML=
+
+dias+" días ❤️ "+horas+" horas ❤️ "+minutos+" minutos ❤️ "+segundos+" segundos";
+
+},1000);
+
+setInterval(()=>{
+
+const c=document.createElement("div");
+
+c.className="corazon";
+
+c.innerHTML="❤️";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.animationDuration=(4+Math.random()*4)+"s";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+
+c.remove();
+
+},8000);
+
+},250);
+
+</script>
+
+</body>
+</html>
